@@ -8,6 +8,7 @@ import algorithms
 
 
 # алгоритмів тестування: злиттям, вставками, вбудований sorted (використовує алгоритм Timsort)
+# алгоритм порівняння має бути останнім
 algorithms = [algorithms.merge_sort, algorithms.insertion_sort, sorted]
 
 
@@ -52,6 +53,23 @@ def run_tests():
 
     for index, algorithm in enumerate(algorithms):
         print(f"{algorithm.__name__}: {algorithms_result[index]/attempts:.6f}")
+
+    print("\nПорівняння:")
+    algorithms_to_rate = algorithms[:-1]
+
+    for index, algorithm in enumerate(algorithms_to_rate):
+        evaluation_algorithm = algorithms[len(algorithms_to_rate)]
+        evaluation_result = algorithms_result[len(algorithms_to_rate)]
+        if algorithms_result[index] > evaluation_result:
+            ratio = algorithms_result[index] / evaluation_result
+            print(
+                f"{evaluation_algorithm.__name__} працює {ratio:.1f} разів швидше ніж {algorithm.__name__}."
+            )
+        else:
+            ratio = evaluation_result / algorithms_result[index]
+            print(
+                f"{algorithm.__name__} працює {ratio:.1f} разів швидше ніж {evaluation_algorithm.__name__}."
+            )
 
 
 def main():
