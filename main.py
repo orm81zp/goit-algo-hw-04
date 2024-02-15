@@ -39,9 +39,8 @@ def run_tests():
 
     for _ in range(attempts):
         for data_range in data_range_sets:
-            random_array = [randint(1, 100) for _ in range(data_range + 1)]
-
             for index, algorithm in enumerate(algorithms):
+                random_array = [randint(1, 100) for _ in range(data_range + 1)]
                 algorithms_result[index] += timeit.timeit(
                     lambda: algorithm(random_array), number=1
                 )
