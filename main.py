@@ -6,6 +6,7 @@ import timeit
 
 import algorithms
 
+
 # алгоритмів тестування: злиттям, вставками, вбудований sorted (використовує алгоритм Timsort)
 algorithms = [algorithms.merge_sort, algorithms.insertion_sort, sorted]
 
